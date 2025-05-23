@@ -12,8 +12,8 @@ int main(int argc, char** argv)
 
     if (argc == 2)
     {
-        ETSCompiler runner(argv[1]);
-        runner.Run();
+        ETSCompiler compiler(argv[1]);
+        compiler.Run();
     }
     else
     {
@@ -21,8 +21,8 @@ int main(int argc, char** argv)
             int threadCount = std::stoi(argv[2]);
             if (threadCount >= 1 && threadCount <= 4)
             {
-                ETSCompiler runner(argv[1], threadCount);
-                runner.Run();       
+                ETSCompiler compiler(argv[1], threadCount);
+                compiler.Run();       
             }
             else
                 std::cout << "Thread count range is [1, 4]" << std::endl;

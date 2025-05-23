@@ -24,7 +24,7 @@ void ETSCompiler::Run()
 
     if (threadCount > 1 && tests.size() >= threadCount)
     {
-        std::cout << "Running all tests async!" << std::endl;
+        std::cout << "Compiling all tests async!" << std::endl;
 
         int taskCount = tests.size() / threadCount;
         int remainingCount = tests.size() % taskCount;
@@ -36,7 +36,7 @@ void ETSCompiler::Run()
     }
     else 
     {
-        std::cout << "Running all tests sync!" << std::endl;
+        std::cout << "Compiling all tests sync!" << std::endl;
         threads[0] = std::thread(task, 0, tests.size());
     }
 
@@ -44,7 +44,7 @@ void ETSCompiler::Run()
         threads[i].join();
 
     std::cout << "In Total" << std::endl
-              << "Task count: " << tests.size() << std::endl
+              << "Test count: " << tests.size() << std::endl
               << "Success: " << etsFilesSuccess.size() << std::endl
               << "Fail: " << etsFilesFail.size() << std::endl;
 }
